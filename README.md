@@ -1,6 +1,9 @@
+**Database**
+Import database.sql
+
 **Actions for the API:**
 
-Remove ingredients:
+Remove ingredients for pizza ID 8:
 
 **PUT http://localhost/app_dev.php/pizzas/8**
 
@@ -10,19 +13,20 @@ Remove ingredients:
    }
 ]
 
-Create new pizza with id's of the ingredients:
+Create new pizza with id's of the ingredients (cost is 50% on top of the ingredient price):
 
 **POST http://localhost/app_dev.php/pizzas**
 
 [
    {
       "name": "Vegetal",
-      "cost": 40,
       "ingredients": [
         3
       ]
    }
 ]
+
+
 
 List all pizzas:
 
