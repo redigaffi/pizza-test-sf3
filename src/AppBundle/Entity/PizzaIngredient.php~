@@ -1,0 +1,84 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * PizzaIngredient
+ */
+class PizzaIngredient
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Ingredients
+     */
+    private $ingredient;
+
+    /**
+     * @var \AppBundle\Entity\Pizza
+     */
+    private $pizza;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set ingredient
+     *
+     * @param \AppBundle\Entity\Ingredients $ingredient
+     *
+     * @return PizzaIngredient
+     */
+    public function setIngredient(\AppBundle\Entity\Ingredients $ingredient = null)
+    {
+        $this->ingredient = $ingredient;
+
+        return $this;
+    }
+
+    /**
+     * Get ingredient
+     *
+     * @return \AppBundle\Entity\Ingredients
+     */
+    public function getIngredient()
+    {
+        return $this->ingredient;
+    }
+
+    /**
+     * Set pizza
+     *
+     * @param \AppBundle\Entity\Pizza $pizza
+     *
+     * @return PizzaIngredient
+     */
+    public function setPizza(\AppBundle\Entity\Pizza $pizza = null)
+    {
+        $this->pizza = $pizza;
+
+        return $this;
+    }
+
+    /**
+     * Get pizza
+     *
+     * @return \AppBundle\Entity\Pizza
+     */
+    public function getPizza()
+    {
+        return $this->pizza;
+    }
+}
+

@@ -1,0 +1,45 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    ingredient_repository:
+        class: AppBundle\Repository\IngredientRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AppBundle\Entity\Ingredient
+
+    pizza_repository:
+        class: AppBundle\Repository\PizzaRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AppBundle\Entity\Pizza
+
+    pizza_formatter_service:
+        class: AppBundle\Service\Formatter\PizzaFormatterService
+        arguments: ["@pizza_repository"]
+
+
+    pizza_preparation_price_calculator_service:
+        class: AppBundle\Service\PizzaPriceCalculatorService
+        arguments: ["%pizza_price_percentage_preparation%"]
+
+    pizza_list_controller:
+        class: AppBundle\Controller\PizzaController
+        arguments: ["@pizza_formatter_service", "@pizza_parser_service", "@pizza_persist_service"]
+
+    pizza_parser_service:
+        class: AppBundle\Service\Parser\PizzaParserService
+
+    pizza_persist_service:
+        class: AppBundle\Service\PersistPizzaService
+        arguments: ["@pizza_repository", "@ingredient_repository", "@pizza_preparation_price_calculator_service"]
+
+    exception_listener:
+        class: AppBundle\EventListener\ExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }

@@ -1,0 +1,25 @@
+index:
+    path: /
+    defaults: {_controller: AppBundle:Default:index}
+
+list_pizzas:
+    path: /pizzas
+    defaults: {_controller: pizza_list_controller:listPizzasAction }
+    methods: [GET, HEAD]
+
+
+list_pizza:
+    path: /pizzas/{id}
+    defaults: {_controller: pizza_list_controller:listPizzasAction }
+    methods: [GET]
+
+edit_pizza:
+    path: /pizzas/{id}
+    defaults: {_controller: pizza_list_controller:editPizzaAction }
+    methods: [PUT]
+
+
+new_pizza:
+    path: /pizzas
+    defaults: {_controller: pizza_list_controller:newPizzaAction }
+    methods: [POST, PUT]

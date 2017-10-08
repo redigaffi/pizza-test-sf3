@@ -1,0 +1,38 @@
+AppBundle\Entity\Pizza:
+    type: entity
+    table: pizza
+    repositoryClass: AppBundle\Repository\PizzaRepository
+    uniqueConstraints:
+        pizza_id_pk:
+            columns:
+                - id
+    manyToMany:
+        ingredients:
+            targetEntity: AppBundle\Entity\Ingredient
+            joinTable:
+                name: pizza_ingredient
+                joinColumns:
+                    pizza_id:
+                        referencedColumnName: id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+        cost:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+    lifecycleCallbacks: {  }
