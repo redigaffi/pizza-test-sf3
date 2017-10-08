@@ -20,8 +20,6 @@ class ExceptionListener
     {
         $exception = $event->getException();
 
-        dump($exception);die;
-
         if ($exception instanceof Exception) {
             $event->setResponse(new JsonResponse($exception));
         } else {
