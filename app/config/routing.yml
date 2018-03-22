@@ -1,7 +1,3 @@
-index:
-    path: /
-    defaults: {_controller: AppBundle:Default:index}
-
 list_pizzas:
     path: /pizzas
     defaults: {_controller: pizza_list_controller:listPizzasAction }
